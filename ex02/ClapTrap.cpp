@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:15:31 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 17:33:19 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:02:51 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(const ClapTrap &other){
     this->Energy = other.Energy;
     this->AttackDamage = other.AttackDamage;
     this->Hitpoint = other.Hitpoint;
-    std::cout << "ClapTrap (" << this->Name << ") Copy Destructuer called." << std::endl;
+    std::cout << "ClapTrap (" << this->Name << ") Copy costructuer called." << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &obj){
