@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:15:29 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 15:18:28 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:12:22 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
 	ClapTrap b("B");
 
 	a.attack("B");
-	a.takeDamage(-5);
+	a.takeDamage(5);
 	a.beRepaired(10);
 
 	std::cout << "----------------" << std::endl;

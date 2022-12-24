@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 18:58:42 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 16:16:55 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:33:11 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,23 @@ void FragTrap::takeDamage(unsigned int amount){
     {
         std::cout << "FragTrap (" << this->Name  << ") he is already dead." << std::endl;
         return ;
+    }else{
+        this->Hitpoint -= amount;
+        std::cout << "FragTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint -= amount;
-    std::cout << "FragTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }
 
 /*----member function beRepaired----*/
 
 void FragTrap::beRepaired(unsigned int amount){
-    if (this->Hitpoint <= 0)
+    if (this->Hitpoint <= 0 || this->Energy <= 0)
     {
         std::cout << "FragTrap (" << this->Name << ") is already dead." << std::endl;
         return ;
+    }else{
+        this->Hitpoint += amount;
+        std::cout << "FragTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint += amount;
-    std::cout << "FragTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }
 
 

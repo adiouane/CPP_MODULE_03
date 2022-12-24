@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 02:12:32 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 16:12:22 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:33:25 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,28 @@ void ScavTrap::takeDamage(unsigned int amount){
     {
         std::cout << "ScavTrap (" << this->Name  << ") he is already dead." << std::endl;
         return ;
+    }else{
+        this->Hitpoint -= amount;
+        std::cout << "ScavTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint -= amount;
-    std::cout << "ScavTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }
 
 /*----member function beRepaired----*/
 
 void ScavTrap::beRepaired(unsigned int amount){
-    if (this->Hitpoint <= 0)
+    if (this->Hitpoint <= 0 || this->Energy <= 0)
     {
         std::cout << "ScavTrap (" << this->Name << ") is already dead." << std::endl;
         return ;
-    }
+    }else{
     this->Hitpoint += amount;
     std::cout << "ScavTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
+    }
 }
 
 /*
     member function guardGate
 */
 void ScavTrap::guardGate(){
-    std::cout << "ScavTrap " << " Guard Gate called." << std::endl;
+    std::cout << "ScavTrap (" << this->Name << ") Guard Gate called." << std::endl;
 };

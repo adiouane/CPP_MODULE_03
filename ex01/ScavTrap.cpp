@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 02:12:32 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 16:10:57 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:33:06 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,23 @@ void ScavTrap::takeDamage(unsigned int amount){
     {
         std::cout << "ScavTrap (" << this->Name << ") take (" << amount << ") damage, but he is already dead." << std::endl;
         return ;
+    }else{
+        this->Hitpoint -= amount;
+        std::cout << "ScavTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint -= amount;
-    std::cout << "ScavTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }
 
 /*----member function beRepaired----*/
 
 void ScavTrap::beRepaired(unsigned int amount){
-    if (this->Hitpoint <= 0)
+    if (this->Hitpoint <= 0 || this->Energy <= 0)
     {
         std::cout << "ScavTrap (" << this->Name << ") is already dead." << std::endl;
         return ;
+    }else{
+        this->Hitpoint += amount;
+        std::cout << "ScavTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint += amount;
-    std::cout << "ScavTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }
 
 /*
@@ -92,5 +94,5 @@ void ScavTrap::beRepaired(unsigned int amount){
 */
 
 void ScavTrap::guardGate(){
-    std::cout << "ScavTrap " << " mGuard Gate called." << std::endl;
+    std::cout << "ScavTrap (" << this->Name << ") Guard Gate called." << std::endl;
 };

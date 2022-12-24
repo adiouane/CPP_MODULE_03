@@ -6,18 +6,18 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:15:31 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 16:09:40 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:24:12 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::~ClapTrap(void){
-    std::cout << "ClapTrap (" << this->Name << ") \033[1;38mDestructuer called." << std::endl;
+    std::cout << "ClapTrap (" << this->Name << ") Destructuer called." << std::endl;
 };
 
 ClapTrap::ClapTrap(void){
-    std::cout << "ClapTrap " << this->Name  << " \033[1;38mDefualt Constructuer called." << std::endl;
+    std::cout << "ClapTrap " << this->Name  << " Defualt Constructuer called." << std::endl;
     this->Name = "Default";
     this->Hitpoint = 10;
     this->Energy = 10;
@@ -53,7 +53,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &obj){
 
 /*----member function attack----*/
 
-void ClapTrap::attack(const std::string target){
+void ClapTrap::attack(const std::string &target){
     if (this->Energy <= 0 || this->Hitpoint <= 0)
         std::cout << "ClapTrap (" << this->Name << ") is dead." << std::endl;
     else
@@ -69,21 +69,24 @@ void ClapTrap::takeDamage(unsigned int amount){
     if (this->Hitpoint < amount)
     {
         std::cout << "ClapTrap (" << this->Name  << ") he is already dead." << std::endl;
+        this->Hitpoint -= amount;
         return ;
+    }else{
+        this->Hitpoint -= amount;
+        std::cout << "ClapTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint -= amount;
-    std::cout << "ClapTrap (" << this->Name << ") take (" << amount << ") damage, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }
 
 /*----member function beRepaired----*/
 
 void ClapTrap::beRepaired(unsigned int amount){
-    if (this->Hitpoint <= 0)
+    if (this->Hitpoint <= 0 || this->Energy <= 0)
     {
         std::cout << "ClapTrap (" << this->Name << ") he is already dead." << std::endl;
         return ;
+    }else{
+        this->Hitpoint += amount;
+        this->Energy -= 1;
+        std::cout << "ClapTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
     }
-    this->Hitpoint += amount;
-    this->Energy -= 1;
-    std::cout << "ClapTrap (" << this->Name << ") is repaired, he have (" << this->Hitpoint << ") hitpoint left." << std::endl;
 }

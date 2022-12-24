@@ -6,7 +6,7 @@
 /*   By: adiouane <adiouane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:15:31 by adiouane          #+#    #+#             */
-/*   Updated: 2022/12/24 15:26:40 by adiouane         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:33:19 by adiouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void ClapTrap::takeDamage(unsigned int amount){
 /*----member function beRepaired----*/
 
 void ClapTrap::beRepaired(unsigned int amount){
-    if (this->Hitpoint <= 0)
+    if (this->Hitpoint <= 0 || this->Energy <= 0)
     {
         std::cout << "ClapTrap (" << this->Name << ") he is already dead." << std::endl;
         return ;
